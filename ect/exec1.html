@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            font-size: 2rem;
+            text-align: center;
+            background-color: black;
+            color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello world1</h1>
+    <h1>hello world2</h1>
+    <h1>hello world3</h1>
+    <h1>hello world4</h1>
+    <h1>hello world5</h1>
+
+    <h2>Hello World</h2>
+    <script>
+        function TimeHandler(){
+           this.mainElem = document.createElement('h3');
+            this.mainElem.classList.add('title');
+            document.body.appendChild(this.mainElem);
+            this.timeValue = false;
+            this.init();
+        }
+
+        TimeHandler.prototype = {
+            constructor : TimeHandler,
+            init : function(){
+                const self = this;
+                let i =0;
+
+            this.timeValue = setInterval(function(){
+
+                if(i==4) return;
+                console.log(i);
+                i++;
+                const arr = ['world1','world2','world3','world4','world5'];
+                arr.forEach(function(){
+                self.mainElem.innerText = arr[i];
+            })
+            },1000);
+            }
+        }
+
+       new TimeHandler();
+    </script>
+</body>
+</html>

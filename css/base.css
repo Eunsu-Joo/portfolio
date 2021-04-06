@@ -1,0 +1,79 @@
+
+
+.w-shadow{
+    text-shadow: 1px 3px 5px rgba(255,255,255,0.5);
+}
+.title0{
+	text-shadow: 0 0 10px #00b3ff,
+	0 0 20px #00b3ff,
+	0 0 40px #00b3ff,
+	0 0 80px #00b3ff,
+	0 0 120px #00b3ff;
+}
+.title1{
+	text-shadow: 0 0 10px #ae00ff,
+							0 0 20px #ae00ff,
+							0 0 40px#ae00ff,
+							0 0 80px #ae00ff,
+							0 0 120px #ae00ff;
+}
+.title2{
+	text-shadow: 0 0 10px #00ff40,
+							0 0 20px #00ff40,
+							0 0 40px#00ff40,
+							0 0 80px #00ff40,
+							0 0 120px #00ff40;
+}
+.title3{
+	text-shadow: 0 0 10px #ff00a6,
+							0 0 20px #ff00a6,
+							0 0 40px#ff00a6,
+							0 0 80px #ff00a6,
+							0 0 120px #ff00a6;
+}
+.title4{
+	text-shadow: 0 0 10px #ae00ff,
+							0 0 20px #ae00ff,
+							0 0 40px#ae00ff,
+							0 0 80px #ae00ff,
+							0 0 120px #ae00ff;
+}
+.btn{
+	font-size: 1.2rem;
+	transition: 0.3s ease-in;
+	text-transform: uppercase;
+	padding: 0.5em 0.8em;
+	outline: 1px solid rgba(255, 255, 255, 0.589);
+}
+.btn-b:hover{
+		box-shadow: 0 0 5px #00b3ff,
+		0 0 7px #00b3ff,
+		0 0 10px #00b3ff,
+		0 0 15px #00b3ff,
+		0 0 20px #00b3ff;
+		outline: none;
+		background-color: #fff;
+		color: #00b3ff;
+		transition: 0.3s ease-in;
+		opacity: 0.8;
+}
+.btn-p:hover{
+	box-shadow: 0 0 5px #ff00a6,
+	0 0 7px #ff00a6,
+	0 0 10px#ff00a6,
+	0 0 15px#ff00a6,
+	0 0 20px #ff00a6;
+	outline: none;
+	background-color: #fff;
+	color: #ff00a6;
+	transition: 0.3s ease-in;
+	opacity: 0.8;
+}
+.naviCurrent{
+	text-shadow: 0 0 5px #ff00a6,
+	0 0 7px #ff00a6,
+	0 0 10px#ff00a6,
+	0 0 15px#ff00a6,
+	0 0 20px #ff00a6;
+	color: #fff;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+</body>
+<script>
+    //     function fadeIn(target,time){
+    //     let level =0;
+    //     // 투명도 변수
+    //     let inTimer = null;
+    //     // inTimer = setInterval(function(){
+    //     // // 인타이머는 클리어 인터벌 할려고 변수선언
+    //     //     level = fadeInAction(target,level,inTimer);
+    //     //     // 레벨은 투명도. 투명도 조절은 fadeInAction함수에 따라서 할꺼임.
+    //     // });
+    //     inTimer = setInterval(function(){
+    //         level = level+0.1;
+    //         // level은 0.1늘림
+    //         changeOpacity(target,level);
+    //         // 오퍼시티 조절
+    //         if(level>1) clearInterval(inTimer);
+    //         //1보다 크면 클리어 인터벌
+    //     },time);
+    // }
+
+    // /**
+    //  * 타겟의 opacity를 서서히 늘리는 함수
+    //  * 
+    //  * @param {*} target 
+    //  * @param {*} level 
+    //  * @param {*} inTimer 
+    //  * @returns 
+    //  */
+
+    // // function fadeInAction(target,level,inTimer){
+    // //     level = level+0.1;
+    // //     // level은 0.1씩늘림
+    // //     changeOpacity(target,level);
+    // //     // 오퍼시티 조절
+    // //     if(level>1) clearInterval(inTimer);
+    // //     //1보다 크면 클리어 인터벌
+    // //     return level;
+    // //     //그리고 끝냄.
+    // // }
+
+    // function fadeOut(target,time){
+    //     let level = 1;
+    //     let outTimer = null;
+    //     outTimer = setInterval(function(){
+    //         // level = fadeOutAction(target,level,outTimer);
+    //                 level = level-0.1;
+    //     changeOpacity(target,level);
+    //     if(level<0){
+    //         clearInterval(outTimer);
+    //     }
+    //     },time);
+    // }
+
+    // // function fadeOutAction(target,level,outTimer){
+    // //     level = level-0.1;
+    // //     changeOpacity(target,level);
+    // //     if(level<0){
+    // //         clearInterval(outTimer);
+    // //     }
+    // // }
+
+        //페이드 인 함수
+
+        function fadeIn(target,time){
+        let level = 0,
+        inTimer = null;
+        inTimer = setInterval(function(){
+            level = level+0.1;
+            changeOpacity(target,level);
+            if(level>1){
+                clearInterval(inTimer);
+            }
+        },time)
+    }
+    function fadeOut(target,time){
+        let level =1;
+        let inTimer = null;
+        inTimer = setInterval(function(){
+            level = level-0.1;
+            changeOpacity(target,level);
+            if(level<0){
+                clearInterval(inTimer);
+            }
+        })
+    }
+/**
+ * opacity를 조절해 주는 함수 
+ * @param {바꿔야 하는 엘리먼트} target 
+ * @param {opacity 숫자} level 
+ */
+    function changeOpacity(target,level){
+        let obj = target;
+        obj.style.opacity = level;
+        obj.style.Mozopacity = level;
+        obj.style.KhtmlOpacity = level;
+        obj.style.filter = 'alpha(opacity='+(level*100)+')';
+    }
+    
+/**
+ * opacity를 조절해 주는 함수 
+ * @param {바꿔야 하는 엘리먼트} target 
+ * @param {opacity 숫자} level 
+ */
+    // function changeOpacity(target,level){
+    //     let obj = target;
+    //     obj.style.opacity = level;
+    //     obj.style.Mozopacity = level;
+    //     obj.style.KhtmlOpacity = level;
+    //     obj.style.filter = 'alpha(opacity='+(level*100)+')';
+    // }
+    const title = document.querySelector('h1');
+    fadeOut(title,100);
+    fadeIn(title,100);
+
+</script>
+</html>
