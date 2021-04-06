@@ -61,8 +61,10 @@
         },2500)
     }
 
-    const profile = document.querySelector('#profile'),
+    const introduce = document.querySelector('#introduce'),
+    profile = document.querySelector('#profile'),
     publishing = document.querySelector('#publishing'),
+    samples = document.querySelector('#sample'),
     puLeftBtn = document.querySelector('.pu-left-btn'),
     puRightBtn = document.querySelector('.pu-right-btn'),
     puImgSlide = document.querySelector('.pu-slide'),
@@ -96,11 +98,11 @@
     const gotoIntroBtn = document.querySelector('.gotoIntro');
     gotoIntroBtn.addEventListener('click',function(){
         fadeOut(body,500);
-        location.replace('index.html');
+        location.href='index.html';
     })
     const gotoResume = document.querySelector('.resumeBtn');
     gotoResume.addEventListener('click',function(){
-        location.replace('./resume/index.html');
+        location.href='./resume/index.html';
     })
     headerFunc();
     //해더 함수 호출
@@ -112,6 +114,7 @@
         let currentScroll = window.scrollY;
         //현재 스크롤 값
         console.log(currentScroll);
+
         if(currentScroll>=100){
             header.style.backgroundColor = 'rgba(0,0,0,0.3)';
             //해더 스크롤 했을 때, 현재 스크롤 위치가 100 이상이면 배경색 변경
@@ -119,23 +122,29 @@
             header.style.backgroundColor = 'inherit';
             //100 이하이면 배경은 inherit
         }
-        if(currentScroll>=400){
-            profile.classList.add('remove');
+        if(currentScroll>280){
+            document.querySelector('.move-area').classList.remove('active');
+            
+        } else{
+            document.querySelector('.move-area').classList.add('active');
         }
-        if(currentScroll<400){
-            publishing.classList= 'remove';
-            profile.classList.remove('remove');
+
+        if(currentScroll>=500){
+            document.querySelector('.code').classList.remove('code-ani');
+            profile.classList.add('show');
+        }
+        if(currentScroll<350){
+            profile.classList= 'remove';
+            document.querySelector('.code').classList.add('code-ani');
             
         }
-        if(profile.classList.contains('remove')){
-            publishing.classList.add('show');
+
+        if(currentScroll>1208){
+            profile.classList= 'remove';
         }
-        if(currentScroll>1360){
-            publishing.classList= 'remove';
-        }
-        if(currentScroll>=1106&&currentScroll<2206) {
+        if(currentScroll>=1925&&currentScroll<3207) {
             clouds.classList.add('cloudsAni');
-            cloudTitle.style.marginBottom = currentScroll-550 *2 +'px';
+            cloudTitle.style.marginBottom = currentScroll-1050 *2 +'px';
             console.log(currentScroll);
             
         } else{
@@ -143,11 +152,7 @@
             clouds.classList.remove('cloudsAni');
            
         }
-        if(currentScroll>2206){
-            document.querySelector('.move-area').classList.add('active');
-        } else{
-            document.querySelector('.move-area').classList.remove('active');
-        }
+
     })
 
  

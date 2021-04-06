@@ -1,4 +1,4 @@
-	/* 해더 */
+	/* 바디*/
 	body{
 		height: 100%;
 		position: relative;
@@ -10,7 +10,7 @@
 		overflow-x: hidden;
 		overflow-y: hidden;
 	}
-	
+	/* 바디 sticky 클래스 있을 시 스크롤 */
 	body.sticky{
 		overflow-x: hidden;
 		overflow-y: scroll;
@@ -40,8 +40,8 @@
 		justify-content: flex-end;
 		align-items: center;
 		z-index: 100;
-
 	}
+	/* 해더 sticky클래스 : height조절 */
 	#header.sticky{
 		height: 80px;
 		padding-top: 20px;
@@ -79,6 +79,7 @@
 		0 0 30px #ff00a6,
 		0 0 50px #ff00a6;
 	}
+	/* 로고 sticky: 폰트사이즈 조절, 위치 조절  */
 	#header.sticky #logo{
 		position: absolute;
 		font-size: 2.5rem;
@@ -86,9 +87,11 @@
 		transform: translate3d(0,-30%,0);
 		margin-top: 5px;
 	}
+	/* a sticky : 블락 */
 	#header.sticky #logo a{
 		display: block;
 	}
+	/* span : 마진 간격 주기 */
 	#header.sticky #logo span{
 		padding-bottom: 1rem;
 	}
@@ -110,6 +113,7 @@
 		transition: 0.3s;
 		transform: translateX(200%);
 	}
+	/* nav sticky : 투명도, 위치 조절 */
 	#header.sticky nav ul{
 		opacity: 1;
 		transition: 0.3s;
@@ -144,6 +148,9 @@
 		0 0 15px #00b3ff,
 		0 0 20px #00b3ff;
 	}
+
+	/* 메인 시작 */
+
 	main{
 		
 		transition: 0.5s;
@@ -153,41 +160,339 @@
 		opacity: 0;
 		
 	}
-	.container{
 
+	/* 섹션1 : introduce- 플렉스 위치 가운데 정렬 */
+
+section#introduce{
+	width: 100%;
+	height: calc(100vh - 80px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	border: 1px solid white;
+}
+
+
+/* 클립 콘테이너 */
+#introduce .container{
+	width:	960px;
+	height: 540px;
+	background-color: #222;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0px 0px 20px rgba(255,255,255,0.4);
+}
+
+/* 인트로 타이틀 */
+#introduce h2{
+	text-shadow: 0 0 10px #00b3ff,
+	0 0 20px #00b3ff,
+	0 0 40px #00b3ff,
+	0 0 80px #00b3ff,
+	0 0 120px #00b3ff;
+	color: #fff;
+	font-family:'Playfair Display',sans-serif ;
+	font-size: 4vw;
+	z-index: 100;
+	width: 100%;
+	text-align: center;
+	padding: 1em 0 0;
+	margin-bottom: 130px;
+}
+
+/* 클립 콘텐츠 */
+#introduce .container .clip
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: 0.5s;
+	z-index: 1;
+	background-repeat: no-repeat;
+}
+#introduce .container .clip::before{
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.3);
+}
+#introduce .container .clip::after{
+	content: '';
+	position: absolute;
+	bottom: 50px;
+	color: #fff;
+	font-size: 2rem;
+	font-family: 'Playfair Display' ;
+	font-weight: 600;
+	transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+#introduce .container .clip:hover:after,
+#introduce .container .clip:hover::before{
+	opacity: 0;
+}
+
+/* 클립 패스 배경 설정하기 */
+
+#introduce .container .clip1
+{
+	background: url(../images/publising.jpg);
+	background-size: cover;
+	clip-path: polygon(0 0, 40% 0, 20% 100%, 0% 100%);
+}
+#introduce .container .clip2
+{
+	background: url(../images/sample.jpg);
+	background-size: cover;
+	clip-path: polygon(40% 0, 80% 0, 65% 100%, 20% 100%);
+}
+#introduce .container .clip3
+{
+	background: url(../images/life.jpg);
+	background-size: contain;
+	clip-path: polygon(80% 0, 100% 0, 100% 100%, 65% 100%);
+}
+/*콘테이너 마우스 오버시 클립 배경 나타내기 */
+#introduce .container:hover .clip
+{
+	clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+/*클립 요소  마우스 오버시 배경 나타내기 */
+#introduce .container .clip:hover
+{
+	transition-delay: 0.5s;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+/* 클립 콘텐츠 */
+#introduce .clip .content{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: -100%;
+	background-color: rgba(0,0,0,0.8);
+	padding: 20px 40px;
+	opacity: 0;
+	transition: 1s ease-in;
+	
+}
+/* 오버시 바텀 올라가면서 나타내기 */
+#introduce .clip:hover .content{
+	bottom: 0;
+	opacity: 1;
+}
+
+#introduce .clip:hover .content h3{
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+	font-family: 'Lato',sans-serif;
+	font-weight: 600;
+	color: #fff;
+}
+#introduce .clip:hover .content p{
+	font-size: 1.2rem;
+	line-height: 180%;
+	word-break: keep-all;
+	color: #fff;
+}
+
+/* 3d planet area */
+
+#introduce .move-area{
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	right: 50px;
+	top: 50px;
+	z-index: -1;
+	perspective: 1200px;
+	transform-style: preserve-3d;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#introduce .move-area .planet{
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%,-50%,0);
+	border-radius: 50%;
+	background-size: cover;
+	background-repeat: repeat-x;
+	box-shadow: inset 0px 0px 20px rgba(255,255,255,0.4),
+	0 0 30px #4069ff;
+	background-image: url(../images/galaxy4.jpg);
+	overflow: hidden;
+	
+}
+#introduce .move-area .planet::after{
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(153,103,186,1) 41.2%, rgba(0,113,227,1) 90% );
+	opacity: 0.2;
+}
+/* 행성 텍스트 3d공간 만들기 */
+#introduce .move-area .planet-desc{
+	transform-style: preserve-3d;
+}
+
+#introduce .move-area .planet-desc span{
+	position: absolute;
+	font-size: 1.5em;
+	left: 0;
+	top: 0;
+	color: #fff;
+	padding: 5px;
+	transform-style: preserve-3d;
+	transform-origin: center;
+	transform: rotateY(calc(var(--i) * calc(360deg / 26))) translateZ(200px);
+}
+/* 애니메이션 동작 : perspective로 원근조절, 글자 360deg 돌리기, 행성과의 거리 rotateX */
+@keyframes animateDesc
+{
+	0%
+	{
+		transform: perspective(1500px) rotateY(360deg) rotateX(15deg) translateY(-10px);
 	}
+	100%
+	{
+		transform: perspective(1500px) rotateY(0deg) rotateX(15deg) translateY(-10px);
+	}
+}
+
+@keyframes animatePlanet{
+	0%{
+		background-position: 0 0;
+	}
+	100%{
+		background-position: -600px 0;
+	}
+}
+/* active : 행성 배경 돌아가는 애니메이션 실행 */
+
+#introduce div.active .planet{
+	animation: animatePlanet 15s linear 4;
+}
+
+/*  active :  텍스트 돌아가는 애니메이션 실행 */
+#introduce div.active .planet-desc{
+	animation: animateDesc 15s linear 4;
+}
+
+/* view code  */
+
+#introduce .code-area{
+	width: 350px;
+	height: 100px;
+	position: absolute;
+	top: 430px;
+	right: 50px;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+#introduce .code-area .code {
+	color: #fff;
+	overflow: hidden;
+	border-right: .15em solid rgba(255,255,255,0.5); 
+	white-space: nowrap; /* Keeps the content on a single line */
+	letter-spacing: .15em; /* Adjust as needed */
+	  text-align: center;
+	  padding: 15px 0;
+	  font-size: 1.5rem;
+  }
+  #introduce .code-area .code-ani{
+	animation: 
+	typing 4s steps(30) 5,
+	blink-caret 0.7s infinite;
+  }
+
+  /* 타이핑 애니메이션 */
+  @keyframes typing {
+	from { width: 0 }
+	to { width: 85% }
+  }
+  
+  /* 타이핑 커서 애니메이션 */
+  @keyframes blink-caret {
+	from, to { border-color: transparent }
+	50% { border-color: rgba(255,255,255,0.5) }
+  }
+
+/* 프로필 - about Me */
 	#profile{
 		width: 100%;
-		height: calc(100vh - 80px);
+		height: 100vh;
 		position: relative;
 		color: #fff;
 		z-index: 1;
 		position: relative;
 		overflow: hidden;
 		padding-left: 150px;
+		border: 2px solid white;
 	}
 
 	/* 섹션2 지나가면서 없애기 */
+	/* 섹션2 지나올때 나타내기 */
 	#profile::before{
 		content: '';
-		width: 100%;
-		height: 80%;
+		width: 500px;
+		height: 500px;
 		position: fixed;
-		bottom: 0;
-		right: 100px;
-		transform: rotateY(180deg);
-		background-image: url(../images/plants2.jpg);
-		background-repeat: no-repeat;
-		background-size: 140%;
-		opacity: 0.9;
+		bottom: 50px;
+		right: 87px;
+		background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+		filter: blur(6px) contrast(0.7);
+		opacity: 0;
 		z-index: -1;
+		border-radius: 50%;
 		transition: 1s;
-
+	}
+	#profile::after{
+		content: '1';
+		width: 500px;
+		height: 500px;
+		position: fixed;
+		bottom: 50px;
+		right: 87px;
+		background-image:url(../images/plants1.jpg);
+		/* filter: blur(6px) contrast(0.7); */
+		opacity: 0;
+		z-index: -1;
+		border-radius: 50%;
+		/* animation: opiBg 3s ease-in-out; */
+	}
+	#profile.show::before{
+		opacity: 0.3 !important;
+		transition: 1.3s;
+	}
+	#profile.show::after{
+		opacity: 0.9 !important;
+		transition: 1.3s;
 	}
 	#profile.remove::before{
-		opacity: 0;
-		transition: 1s;
+		opacity: 0 ;
+		transition: 2s;
 	}
+	#profile.remove::after{
+		opacity: 0 ;
+		transition: 2s;
+	}
+
 
 	#profile article{
 		width: 100%;
@@ -356,51 +661,6 @@
 		flex-direction: column;
 		align-items: center;
 
-	}
-	/* 섹션2 지나올때 나타내기 */
-	#publishing::before{
-		content: '';
-		width: 500px;
-		height: 500px;
-		position: fixed;
-		bottom: 50px;
-		right: 87px;
-		background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
-		filter: blur(6px) contrast(0.7);
-		opacity: 0;
-		z-index: -1;
-		border-radius: 50%;
-		transition: 1s;
-	}
-	#publishing::after{
-		content: '1';
-		width: 500px;
-		height: 500px;
-		position: fixed;
-		bottom: 50px;
-		right: 87px;
-		background-image:url(../images/plants1.jpg);
-		/* filter: blur(6px) contrast(0.7); */
-		opacity: 0;
-		z-index: -1;
-		border-radius: 50%;
-		/* animation: opiBg 3s ease-in-out; */
-	}
-	#publishing.show::before{
-		opacity: 0.3 !important;
-		transition: 2s;
-	}
-	#publishing.show::after{
-		opacity: 0.9 !important;
-		transition: 2s;
-	}
-	#publishing.remove::before{
-		opacity: 0 ;
-		transition: 2s;
-	}
-	#publishing.remove::after{
-		opacity: 0 ;
-		transition: 2s;
 	}
 
 	#publishing h2{
@@ -601,6 +861,7 @@
 	#sample{
 		width: 100%;
 		height: 100vh;
+		border: 1px solid white;
 		
 	}
 	#sample .sample-clouds{
@@ -757,266 +1018,6 @@
 		transform: scale(2.5);
 	  }
 	}
-section#life{
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-}
-
-
-/* 클립 콘테이너 */
-#life .container{
-	width:	960px;
-	height: 540px;
-	background-color: #222;
-	position: relative;
-	overflow: hidden;
-	box-shadow: 0px 0px 20px rgba(255,255,255,0.4);
-}
-
-/* 라이프 타이틀 */
-#life h2{
-	text-shadow: 0 0 10px #00b3ff,
-	0 0 20px #00b3ff,
-	0 0 40px #00b3ff,
-	0 0 80px #00b3ff,
-	0 0 120px #00b3ff;
-	color: #fff;
-	font-family:'Playfair Display',sans-serif ;
-	font-size: 4vw;
-	z-index: 100;
-	width: 100%;
-	text-align: center;
-	padding: 1em 0 0;
-	margin-bottom: 130px;
-}
-
-/* 클립 콘텐츠 */
-#life .container .clip
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	transition: 0.5s;
-	z-index: 1;
-	background-repeat: no-repeat;
-}
-#life .container .clip::before{
-	content: '';
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: rgba(0,0,0,0.3);
-}
-#life .container .clip::after{
-	content: '';
-	position: absolute;
-	bottom: 50px;
-	color: #fff;
-	font-size: 2rem;
-	font-family: 'Playfair Display' ;
-	font-weight: 600;
-	transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
-}
-#life .container .clip:hover:after,
-#life .container .clip:hover::before{
-	opacity: 0;
-}
-#life .container .clip1::after{
-	content: 'EXERCISE';
-	left: 20px;
-	text-shadow: 0 0 5px #ff0000,
-	0 0 7px#ff0000,
-	0 0 10px#ff0000,
-	0 0 15px#ff0000,
-	0 0 20px #ff0000;
-
-}
-#life .container .clip2::after{
-	content: 'MAKE-UP';
-	left: 370px;
-	text-shadow: 0 0 5px #ae00ff,
-	0 0 7px#ae00ff,
-	0 0 10px#ae00ff,
-	0 0 15px#ae00ff,
-	0 0 20px #ae00ff;
-
-}
-#life .container .clip3::after{
-	content: 'SURFING';
-	right: 80px;
-	text-shadow: 0 0 5px#00b3ff,
-	0 0 7px#00b3ff,
-	0 0 10px#00b3ff,
-	0 0 15px#00b3ff,
-	0 0 20px #00b3ff;
-
-}
-/* 클립 패스 배경 설정하기 */
-
-#life .container .clip1
-{
-	background: url(../images/gym.jpg);
-	background-size: cover;
-	clip-path: polygon(0 0, 40% 0, 20% 100%, 0% 100%);
-}
-#life .container .clip2
-{
-	background: url(../images/makeup.jpg);
-	background-size: cover;
-	clip-path: polygon(40% 0, 80% 0, 65% 100%, 20% 100%);
-}
-#life .container .clip3
-{
-	background: url(../images/surf.jpg);
-	background-size: contain;
-	clip-path: polygon(80% 0, 100% 0, 100% 100%, 65% 100%);
-}
-/*콘테이너 마우스 오버시 클립 배경 나타내기 */
-#life .container:hover .clip
-{
-	clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-}
-/*클립 요소  마우스 오버시 배경 나타내기 */
-#life .container .clip:hover
-{
-	transition-delay: 0.5s;
-	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-/* 클립 콘텐츠 */
-#life .clip .content{
-	width: 100%;
-	position: absolute;
-	left: 0;
-	bottom: -100%;
-	background-color: rgba(0,0,0,0.8);
-	padding: 20px 40px;
-	opacity: 0;
-	transition: 1s ease-in;
-	
-}
-/* 오버시 바텀 올라가면서 나타내기 */
-#life .clip:hover .content{
-	bottom: 0;
-	opacity: 1;
-}
-#life .clip1 h3{
-	color: #ff0000;
-}
-#life .clip2 h3{
-	color: #ae00ff;
-}
-#life .clip3 h3{
-	color: #00b3ff;
-}
-#life .clip:hover .content h3{
-	font-size: 1.8rem;
-	margin-bottom: 20px;
-	font-family: 'Lato',sans-serif;
-	font-weight: 600;
-}
-#life .clip:hover .content p{
-	font-size: 1.2rem;
-	line-height: 180%;
-	word-break: keep-all;
-	color: #fff;
-}
-
-/* 3d행성 공간 */
-
-#life .move-area{
-	width: 400px;
-	height: 400px;
-	position: absolute;
-	right: 50px;
-	top: 50px;
-	z-index: -1;
-	perspective: 1200px;
-	transform-style: preserve-3d;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-#life .move-area .planet{
-	width: 250px;
-	height: 250px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate3d(-50%,-50%,0);
-	border-radius: 50%;
-	background-size: cover;
-	background-repeat: repeat-x;
-	box-shadow: inset 0px 0px 20px rgba(255,255,255,0.4),
-	0 0 30px #4069ff;
-	background-image: url(../images/galaxy4.jpg);
-	overflow: hidden;
-	
-}
-#life .move-area .planet::after{
-	content: '';
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(153,103,186,1) 41.2%, rgba(0,113,227,1) 90% );
-	opacity: 0.2;
-}
-/* 행성 텍스트 3d공간 만들기 */
-#life .move-area .planet-desc{
-	transform-style: preserve-3d;
-}
-
-#life .move-area .planet-desc span{
-	position: absolute;
-	font-size: 1.5em;
-	left: 0;
-	top: 0;
-	color: #fff;
-	padding: 5px;
-	transform-style: preserve-3d;
-	transform-origin: center;
-	transform: rotateY(calc(var(--i) * calc(360deg / 26))) translateZ(200px);
-}
-@keyframes animateDesc
-{
-	0%
-	{
-		transform: perspective(1500px) rotateY(360deg) rotateX(15deg) translateY(-10px);
-	}
-	100%
-	{
-		transform: perspective(1500px) rotateY(0deg) rotateX(15deg) translateY(-10px);
-	}
-}
-
-@keyframes animatePlanet{
-	0%{
-		background-position: 0 0;
-	}
-	100%{
-		background-position: -600px 0;
-	}
-}
-/* 행성 배경 돌아가는 애니메이션 실행 */
-
-#life div.active .planet{
-	animation: animatePlanet 15s linear 2;
-}
-
-/* 텍스트 돌아가는 애니메이션 실행 */
-#life div.active .planet-desc{
-	animation: animateDesc 15s linear 2;
-}
-
 section#contact{
 	width: 100%;
 	height: 50vh;
