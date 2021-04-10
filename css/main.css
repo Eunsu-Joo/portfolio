@@ -2,7 +2,7 @@
 	body{
 		height: 100%;
 		position: relative;
-		height: 450vh ;
+		height: 500vh ;
 		background: 
 		url(../images/body-bg.jpg);
 		background-attachment: fixed;
@@ -170,7 +170,6 @@ section#introduce{
 	flex-direction: column;
 	align-items: center;
 	position: relative;
-	border: 1px solid white;
 }
 
 
@@ -182,6 +181,8 @@ section#introduce{
 	position: relative;
 	overflow: hidden;
 	box-shadow: 0px 0px 20px rgba(255,255,255,0.4);
+	margin-right: 100px;
+	cursor: pointer;
 }
 
 /* 인트로 타이틀 */
@@ -443,7 +444,6 @@ section#introduce{
 		position: relative;
 		overflow: hidden;
 		padding-left: 150px;
-		border: 2px solid white;
 	}
 
 	/* 섹션2 지나가면서 없애기 */
@@ -476,6 +476,7 @@ section#introduce{
 		border-radius: 50%;
 		/* animation: opiBg 3s ease-in-out; */
 	}
+	/* 나타내기 */
 	#profile.show::before{
 		opacity: 0.3 !important;
 		transition: 1.3s;
@@ -484,6 +485,7 @@ section#introduce{
 		opacity: 0.9 !important;
 		transition: 1.3s;
 	}
+	/* 없애기 */
 	#profile.remove::before{
 		opacity: 0 ;
 		transition: 2s;
@@ -493,22 +495,21 @@ section#introduce{
 		transition: 2s;
 	}
 
-
 	#profile article{
 		width: 100%;
 		height: 100%;
-		display: flex;
 	}
 
-
+/* 프로필 콘텐츠 */
 
 	#profile .profile-contents{
 		max-width: 1400px;
+		width: 1200px;
 		height: 650px;
 		position: absolute;
-		padding: 2em 1em;
 		top: 50%;
 		transform: translate3d(0,-50%,0);
+
 		
 	}
 	#profile .profile-contents h2{
@@ -525,12 +526,7 @@ section#introduce{
 		0 0 80px #00b3ff,
 		0 0 120px #00b3ff;
 	}
-	#profile .profile-contents h2 span{
-		display: block;
-	}
-	#profile .profile-contents h2 span:nth-last-child(1){
-		padding-left: 5em;
-	}
+/* 프로필 서브 타이틀 */
 	#profile h3{
 		margin: 5% 0;
 		}
@@ -545,17 +541,73 @@ section#introduce{
 		padding: 0 5px;
 		font-size: 1.5em;
 	}
-	#profile .contents-desc{
-		width: 100%;
-	}
+		/* 프로필 텍스트 */
 
-
+		#profile .p-sub-contents{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			padding: 20px 0 30px;
+		}
+		#profile  dl{
+			width: 50%;
+			padding-left: 2em;
+		}
+		#profile  dl dt{
+			position: relative;
+			font-family: 'Lato',sans-serif;
+			font-weight: 400;
+			font-size: 1.4rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			padding-bottom: 1em;
+			padding-top: 1em;
+			color: #ff00a6;
+			opacity: 0.8;
+			font-weight: 600;
+		}
+	
+		#profile  dl dt::after{
+			content: '';
+			width: 80%;
+			height: 1px;
+			background-color: rgba(255,255,255,0.3);
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+	
+		}
+		#profile dl dd {
+			line-height: 23px;
+		}
+		#profile dl dd span{
+			opacity: 0.8;
+			padding-bottom: 0.5em;
+			display: block;
+		}
+	
+		#profile .contents-desc dl dd a{
+			text-transform: uppercase;
+			font-size: 1.2rem;
+			padding: 0.3em 1em;
+			transition: 0.3s ease-in;
+		}
+		#profile .contents-desc .resumeBtn{
+			margin:  0.5em 0 1em 1em;
+		}
+		#profile .contents-desc .resume-text{
+			font-size: 1.2rem;
+			margin-left: 1em;
+			color: #fff;
+			font-weight: 500;
+		}
+	/* 프로필 능력치 - ability */
 	#profile .p-ability{
 		width:100%;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		padding: 20px 0;
+		padding: 10px 0 20px;
 	}
 	#profile .p-ability .ability-box{
 		width: 33.333%;
@@ -595,59 +647,7 @@ section#introduce{
 		border-radius: 10px;
 	}
 
-	#profile .p-sub-contents{
-		width: 100%;
-		height: 100%;
-		display: flex;
-		padding: 20px 0 30px;
-	}
-	#profile .contents-desc dl{
-		width: 50%;
-		padding-left: 2em;
-	}
-	#profile .contents-desc dl dt{
-		position: relative;
-		font-family: 'Lato',sans-serif;
-		font-weight: 400;
-		font-size: 1.4rem;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		padding-bottom: 1em;
-		padding-top: 1em;
-		color: #ff00a6;
-		opacity: 0.8;
-		font-weight: 600;
-	}
 
-	#profile .contents-desc dl dt::after{
-		content: '';
-		width: 80%;
-		height: 1px;
-		background-color: rgba(255,255,255,0.3);
-		position: absolute;
-		bottom: 10px;
-		left: 0;
-
-	}
-	#profile dl dd {
-		line-height: 23px;
-	}
-	#profile dl dd span{
-		opacity: 0.8;
-		padding-bottom: 0.5em;
-		display: block;
-	}
-
-	#profile .contents-desc dl dd a{
-		text-transform: uppercase;
-		font-size: 1.2rem;
-		padding: 0.3em 1em;
-		transition: 0.3s ease-in;
-	}
-	#profile .contents-desc .resumeBtn{
-		margin-left: 1em;
-		margin-top: 0.3em;
-	}
 
 	/* 퍼블리싱 */
 
@@ -710,6 +710,8 @@ section#introduce{
 	#publishing .pu-slideBox{
 		width: 1400px;
 		display: flex;
+		flex-wrap: wrap;
+		position: relative;
 	}
 	/* 슬라이드 이미지 박스 */
 	#publishing .pu-slideBox .pu-imgBox{
@@ -722,7 +724,7 @@ section#introduce{
 		perspective: 1200px;
 		cursor: pointer;
 	}
-	#publishing .pu-slideBox .pu-imgBox .pi-img-3d{
+	#publishing .pu-slideBox .pu-imgBox .pu-img-3d{
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -740,26 +742,50 @@ section#introduce{
 		transform: rotateY(0);
 		transition: 0.5s ease-out;
 	}
-	#publishing .pu-slideBox .pu-imgBox:hover img{
+	#publishing .pu-slideBox .pu-imgBox:hover> .pu-img-3d img
+	 {
 		transform: rotateY(30deg);
 	}
-	#publishing .pu-slideBox .pu-imgBox  .web-img{
-		width: 75%;
-		height: 60%;
+	#publishing .pu-slideBox .pu-imgBox .mockup{
+		width: 390px;
+		height: 200px;
 		position: absolute;
-		top: 40px;
-		left: 90px;
-		bottom: 0;
+		top: 38px;
+		left: 50px;
 		z-index: -1;
+		overflow: hidden;
+		transform: rotateY(0);
+		transition: 0.5s ease-out;
 	}
+	#publishing .pu-slideBox .pu-imgBox:hover .mockup{
+		transform: rotateY(30deg);
+		left: 30px;
+		width: 420px;
+	}
+	#publishing .pu-slideBox .pu-imgBox .mockup img{
+		width: 100%;
+		position: absolute;
+		top: 0;
+	}
+	#publishing .pu-slideBox .pu-imgBox:hover .mockup img{
+		animation: mockup 3s ease-in-out;
+		
+	}
+	@keyframes mockup{
+		0%{
+			top: 0;
+		}
+		100%{
+			top: -300%;
+		}
+	}
+	/* 텍스트 */
 	#publishing .pu-slideBox .pu-desc{
 		width: 50%;
 		display: flex;
 		flex-direction: column;
 		padding: 50px 0 50px 30px;
 	}
-
-
 	#publishing .pu-desc h3{
 		display: flex;
 		align-items: center;
@@ -770,7 +796,7 @@ section#introduce{
 		padding: 0.7em 0 0.3em;
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		text-shadow: 1px 1px 5px rgba(255,255,255,0.4);
+		text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
 	}
 	#publishing .pu-slide .pu-slideBox:nth-child(1) h3{
 		color: #ff0000;
@@ -789,7 +815,7 @@ section#introduce{
 	}
 	#publishing .pu-slide .pu-slideBox:nth-child(6) h3{
 		color: #fff;
-		text-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+		text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 	}
 
 	#publishing .pu-desc p{
@@ -813,9 +839,10 @@ section#introduce{
 		padding-right: 1.5em;
 	}
 	.pu-contents-btn{
+		width: 100%;
 		position: absolute;
-		bottom: 20%;
-		left: 10%;
+		left: 120px;
+		bottom: 140px;
 	}
 	.pu-contents-btn a:nth-child(1){
 		margin-right: 1.5em;
@@ -854,14 +881,10 @@ section#introduce{
 		transform: rotateY(60deg);
 	}
 	
-
-
-
-	
+	/* sample */
 	#sample{
 		width: 100%;
 		height: 100vh;
-		border: 1px solid white;
 		
 	}
 	#sample .sample-clouds{
@@ -1020,6 +1043,113 @@ section#introduce{
 	}
 section#contact{
 	width: 100%;
-	height: 50vh;
+	height: 100vh;
 	padding: 5px 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+}
+#contact h2{
+	text-shadow: 0 0 10px #00b3ff,
+	0 0 20px #00b3ff,
+	0 0 40px #00b3ff,
+	0 0 80px #00b3ff,
+	0 0 120px #00b3ff;
+	color: #fff;
+	font-family:'Playfair Display',sans-serif ;
+	font-size: 4vw;
+	z-index: 100;
+	width: 100%;
+	padding: 1em 0 1em 0;
+	text-align: center;
+	
+}
+#contact .img-container{
+	width: 960px;
+	height: 540px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url(../images/bg1.jpg);
+	box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+#contact .contents{
+	width: 100%;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	padding: 1.5em 3em;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#contact .contents p{
+	font-size: 16px;
+	line-height: 170%;
+	word-break: keep-all;
+}
+#contact .sns{
+	width: 1400px;
+	height: 250px;
+	display: flex;margin-top: 100px;
+	align-items: center;
+	padding:  0 100px;
+}
+#contact .sns .imgBx{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0px 0px 7px rgba(255,255,255,0.4);
+}
+#contact .sns .imgBx img{
+	width: 100%;
+}
+#contact .sns .sns-cont{
+	width: 80%;
+	margin-left: 50px;
+}
+#contact .sns .snsBx{
+	display: flex;
+}
+#contact .sns .sns-cont h3{
+	text-align: center;
+	font-size: 2rem;
+	padding: 1em 0;
+	color: #fff;
+}
+#contact .sns .sns-cont a{
+	width: 25%;
+	text-align: center;
+	padding: 30px 0 50px;
+	display: block;
+	position: relative;
+}
+#contact .sns .sns-cont a:hover i{
+	text-shadow: 0 0 10px #00b3ff,
+	0 0 20px #00b3ff,
+	0 0 40px #00b3ff,
+	0 0 80px #00b3ff,
+	0 0 120px #00b3ff;
+}
+#contact .sns .sns-cont i{
+	font-size: 3.5rem;color: #fff;
+	transition: 0.5s;
+	
+}
+#contact .sns .sns-cont p{
+	font-size: 1.2rem;
+	padding: 15px 0 10px;
+	position: absolute;
+	left: 50%;
+	bottom: -100%;
+	width: 100%;
+	transform: translateX(-50%);
+	transition: 0.5s;
+}
+#contact .sns .sns-cont a:hover p{
+	bottom: 0%;
+	text-shadow: none;
 }

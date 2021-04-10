@@ -1,3 +1,0 @@
-1. 폰트 : 타이틀 (playfair), 서브 타이틀(Montserrat)
-퍼브리싱 타이틀 (Lato)
-한글폰트(쫌 차가우면서 개성있는 폰트 사용, sans-serfi로)
