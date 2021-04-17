@@ -2,7 +2,6 @@
 	body{
 		height: 100%;
 		position: relative;
-		height: 500vh ;
 		background: 
 		url(../images/body-bg.jpg);
 		background-attachment: fixed;
@@ -22,7 +21,7 @@
 		left: 0;
 		bottom: 0;
 		right: 0;
-		background-image: linear-gradient(to bottom, rgb(20, 25, 31)  21.8%,rgba(44,83,131,1) 46.5%, rgb(77, 130, 148) 67.3%,rgba(44,83,131,1) 86.5%,rgb(31, 45, 63) 100.2% );
+		background-image: linear-gradient(to bottom, rgba(20, 25, 31)  21.8%,rgba(44,83,131,1) 46.5%, rgb(77, 130, 148) 67.3%,rgba(44,83,131,1) 86.5%,rgb(31, 45, 63) 100.2% );
 		z-index: -1;
 		opacity: 0.3;
 	}
@@ -169,19 +168,35 @@ section#introduce{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	position: relative;
 }
-
-
+#introduce::before{
+	content: '';
+	width: 760px;
+	height: 450px;
+	position: absolute;
+right: 0;
+bottom: 0;
+	background-image: url(../images/introbg1.png);
+	opacity: 1;
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -1;
+	transition: opacity 1s ease;
+	
+}
+#introduce.active::before{
+	opacity: 0;
+}
 /* 클립 콘테이너 */
 #introduce .container{
-	width:	960px;
-	height: 540px;
+	width:	840px;
+	height: 480px;
 	background-color: #222;
 	position: relative;
 	overflow: hidden;
 	box-shadow: 0px 0px 20px rgba(255,255,255,0.4);
-	margin-right: 100px;
 	cursor: pointer;
 }
 
@@ -198,8 +213,8 @@ section#introduce{
 	z-index: 100;
 	width: 100%;
 	text-align: center;
-	padding: 1em 0 0;
-	margin-bottom: 130px;
+	/* padding: 1em 0 0; */
+	margin-bottom: 100px;
 }
 
 /* 클립 콘텐츠 */
@@ -304,10 +319,10 @@ section#introduce{
 /* 3d planet area */
 
 #introduce .move-area{
-	width: 400px;
-	height: 400px;
+	width: 250px;
+	height: 250px;
 	position: absolute;
-	right: 50px;
+	left: 6%;
 	top: 50px;
 	z-index: -1;
 	perspective: 1200px;
@@ -316,6 +331,7 @@ section#introduce{
 	align-items: center;
 	justify-content: center;
 }
+
 #introduce .move-area .planet{
 	width: 250px;
 	height: 250px;
@@ -379,60 +395,23 @@ section#introduce{
 		background-position: -600px 0;
 	}
 }
+
 /* active : 행성 배경 돌아가는 애니메이션 실행 */
 
 #introduce div.active .planet{
-	animation: animatePlanet 15s linear 4;
+	animation: animatePlanet 15s linear 6;
 }
 
 /*  active :  텍스트 돌아가는 애니메이션 실행 */
 #introduce div.active .planet-desc{
-	animation: animateDesc 15s linear 4;
+	animation: animateDesc 15s linear 6;
 }
 
-/* view code  */
-
-#introduce .code-area{
-	width: 350px;
-	height: 100px;
-	position: absolute;
-	top: 430px;
-	right: 50px;
-	z-index: 10;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-}
-
-
-#introduce .code-area .code {
-	color: #fff;
-	overflow: hidden;
-	border-right: .15em solid rgba(255,255,255,0.5); 
-	white-space: nowrap; /* Keeps the content on a single line */
-	letter-spacing: .15em; /* Adjust as needed */
-	  text-align: center;
-	  padding: 15px 0;
+  #introduce .btn{
 	  font-size: 1.5rem;
-  }
-  #introduce .code-area .code-ani{
-	animation: 
-	typing 4s steps(30) 5,
-	blink-caret 0.7s infinite;
+		margin-top: 2.8rem;
   }
 
-  /* 타이핑 애니메이션 */
-  @keyframes typing {
-	from { width: 0 }
-	to { width: 85% }
-  }
-  
-  /* 타이핑 커서 애니메이션 */
-  @keyframes blink-caret {
-	from, to { border-color: transparent }
-	50% { border-color: rgba(255,255,255,0.5) }
-  }
 
 /* 프로필 - about Me */
 	#profile{
@@ -444,28 +423,29 @@ section#introduce{
 		position: relative;
 		overflow: hidden;
 		padding-left: 150px;
+		margin: 120px 0 80px 0;
 	}
 
 	/* 섹션2 지나가면서 없애기 */
 	/* 섹션2 지나올때 나타내기 */
 	#profile::before{
 		content: '';
-		width: 500px;
-		height: 500px;
+		width: 400px;
+		height: 400px;
 		position: fixed;
 		bottom: 50px;
 		right: 87px;
-		background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
-		filter: blur(6px) contrast(0.7);
+		background-image: linear-gradient(to top, #09203f 0%, #000407 100%);
+		filter: blur(10px) contrast(0.7);
 		opacity: 0;
 		z-index: -1;
 		border-radius: 50%;
 		transition: 1s;
 	}
 	#profile::after{
-		content: '1';
-		width: 500px;
-		height: 500px;
+		content: '';
+		width: 400px;
+		height: 400px;
 		position: fixed;
 		bottom: 50px;
 		right: 87px;
@@ -478,7 +458,7 @@ section#introduce{
 	}
 	/* 나타내기 */
 	#profile.show::before{
-		opacity: 0.3 !important;
+		opacity: 0.2 !important;
 		transition: 1.3s;
 	}
 	#profile.show::after{
@@ -641,16 +621,13 @@ section#introduce{
 	}
 	#profile .ability-box .bar-progress{
 		height: 80%;
-		width: 80%;
+		width: 0;
 		background-color: #00b3ff;
 		opacity: 0.6;
 		border-radius: 10px;
 	}
 
-
-
 	/* 퍼블리싱 */
-
 
 	#publishing{
 		width: 100%;
@@ -660,9 +637,7 @@ section#introduce{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
 	}
-
 	#publishing h2{
 		text-shadow: 0 0 10px #00b3ff,
 		0 0 20px #00b3ff,
@@ -723,6 +698,7 @@ section#introduce{
 		position: relative;
 		perspective: 1200px;
 		cursor: pointer;
+		margin-left: 50px;
 	}
 	#publishing .pu-slideBox .pu-imgBox .pu-img-3d{
 		position: absolute;
@@ -785,6 +761,7 @@ section#introduce{
 		display: flex;
 		flex-direction: column;
 		padding: 50px 0 50px 30px;
+		margin-left: 30px;
 	}
 	#publishing .pu-desc h3{
 		display: flex;
@@ -799,23 +776,26 @@ section#introduce{
 		text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
 	}
 	#publishing .pu-slide .pu-slideBox:nth-child(1) h3{
-		color: #ff0000;
-	}
-	#publishing .pu-slide .pu-slideBox:nth-child(2) h3{
-		color: rgb(255, 228, 196);
-	}
-	#publishing .pu-slide .pu-slideBox:nth-child(3) h3{
-		color: #2541e0;
-	}
-	#publishing .pu-slide .pu-slideBox:nth-child(4) h3{
-		color: rgb(250, 77, 14);
-	}
-	#publishing .pu-slide .pu-slideBox:nth-child(5) h3{
-		color: rgb(66, 22, 22);
-	}
-	#publishing .pu-slide .pu-slideBox:nth-child(6) h3{
+
 		color: #fff;
 		text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+	}
+	#publishing .pu-slide .pu-slideBox:nth-child(2) h3{
+
+		color: #ff0000;
+	}
+	#publishing .pu-slide .pu-slideBox:nth-child(3) h3{
+
+		color: #ffc414;
+	}
+	#publishing .pu-slide .pu-slideBox:nth-child(4) h3{
+		color: #2541e0;
+	}
+	#publishing .pu-slide .pu-slideBox:nth-child(5) h3{
+		color: #faf2d1;
+	}
+	#publishing .pu-slide .pu-slideBox:nth-child(6) h3{
+		color: rgb(66, 22, 22);
 	}
 
 	#publishing .pu-desc p{
@@ -841,8 +821,8 @@ section#introduce{
 	.pu-contents-btn{
 		width: 100%;
 		position: absolute;
-		left: 120px;
-		bottom: 140px;
+		left: 190px;
+		bottom: 100px;
 	}
 	.pu-contents-btn a:nth-child(1){
 		margin-right: 1.5em;
@@ -913,9 +893,8 @@ section#introduce{
 		
 	}
 	#sample .sam-container{
-		width: 1400px;
-		max-width: 1200px;
-		height: 600px;
+		max-width: 1240px;
+		height: 400px;
 		position: absolute;
 		top: 50%;
 		transform: translate3d(0,-50%,0);
@@ -927,7 +906,7 @@ section#introduce{
 		justify-content: space-between;
 	}
 	#sample .sam-box{
-		width: 320px;
+		width: 300px;
 		height: 400px;
 		position: relative;
 		transition: 0.5s;
@@ -1013,15 +992,16 @@ section#introduce{
 		position: absolute;
 		bottom: 0;
 		max-width: 110%;
-		filter: opacity(0.15);
+		filter: opacity(0);
 		opacity: 0;
 		transition: 0.7s ease-in;
 		transform: scale(1) translateY(-300px);
+		animation: animate calc(5s * var(--i)) linear 1;
 	}
 	#sample div.cloudsAni img{
-		animation: animate calc(5s * var(--i)) linear 3;
+		animation: animate calc(5s * var(--i)) linear infinite;
 		opacity: 1;
-		transition: 0.7s ease-in;
+		filter: opacity(0.1);
 	}
 
 	@keyframes animate
@@ -1043,12 +1023,26 @@ section#introduce{
 	}
 section#contact{
 	width: 100%;
-	height: 100vh;
-	padding: 5px 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	overflow: hidden;
+
+	position: relative;
+}
+#contact .parallax{
+	width: 100%;
+	height: 80%;
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+#contact .parallax img{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
 }
 #contact h2{
 	text-shadow: 0 0 10px #00b3ff,
@@ -1084,35 +1078,38 @@ section#contact{
 	position: absolute;
 	left: 0;
 	bottom: 0;
+	overflow: hidden;
 }
 #contact .contents p{
-	font-size: 16px;
+	font-size: 17px;
 	line-height: 170%;
 	word-break: keep-all;
 }
 #contact .sns{
-	width: 1400px;
-	height: 250px;
-	display: flex;margin-top: 100px;
+	width: 1200px;
+	height: 350px;
+	margin-top: 130px;
+	display: flex;
 	align-items: center;
-	padding:  0 100px;
+	
 }
 #contact .sns .imgBx{
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
+	width: 300px;
+	height: 100%;
 	overflow: hidden;
 	box-shadow: 0px 0px 7px rgba(255,255,255,0.4);
 }
 #contact .sns .imgBx img{
 	width: 100%;
+
 }
 #contact .sns .sns-cont{
 	width: 80%;
-	margin-left: 50px;
+	height: 350px;
 }
 #contact .sns .snsBx{
 	display: flex;
+
 }
 #contact .sns .sns-cont h3{
 	text-align: center;
@@ -1126,6 +1123,8 @@ section#contact{
 	padding: 30px 0 50px;
 	display: block;
 	position: relative;
+	width: 100%;
+	height: 100%;
 }
 #contact .sns .sns-cont a:hover i{
 	text-shadow: 0 0 10px #00b3ff,
@@ -1137,19 +1136,49 @@ section#contact{
 #contact .sns .sns-cont i{
 	font-size: 3.5rem;color: #fff;
 	transition: 0.5s;
+	display: block;
 	
 }
+#contact .sns h3{
+	font-size: 1.4rem;
+	line-height: 150%;
+}
 #contact .sns .sns-cont p{
-	font-size: 1.2rem;
+	font-family: 'Roboto',sans-serif;
+	font-size: 1.4rem;
 	padding: 15px 0 10px;
 	position: absolute;
 	left: 50%;
-	bottom: -100%;
+	bottom:0;
 	width: 100%;
-	transform: translateX(-50%);
 	transition: 0.5s;
+	transform: translateX(-50%);
+	opacity: 0;
+	visibility: hidden;
 }
 #contact .sns .sns-cont a:hover p{
-	bottom: 0%;
-	text-shadow: none;
+	opacity: 1;
+	visibility:visible;
+}
+/* 푸터영역 */
+#footer{
+width: 100%;
+color: #fff;
+margin-top: 100px;
+overflow: hidden;
+background-color: rgba(0, 0, 0, 0.664);
+padding: 1.2rem 130px;
+}
+#footer .logo{
+	float: left;
+	font-size: 1.5rem;
+}
+#footer .logo span:nth-child(1){
+	font-family: 'Gloria Hallelujah', cursive;
+}
+#footer .logo span:nth-child(2){
+	font-family: 'Amatic SC', cursive;
+}
+#footer address{
+	float: right;
 }
