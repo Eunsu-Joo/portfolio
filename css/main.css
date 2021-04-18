@@ -399,7 +399,7 @@ bottom: 0;
 /* active : 행성 배경 돌아가는 애니메이션 실행 */
 
 #introduce div.active .planet{
-	animation: animatePlanet 15s linear 6;
+	animation: animatePlanet 15s linear 10;
 }
 
 /*  active :  텍스트 돌아가는 애니메이션 실행 */
@@ -581,6 +581,9 @@ bottom: 0;
 			color: #fff;
 			font-weight: 500;
 		}
+		#profile .contents-desc .resume-text em{
+			font-size: 1.4rem;
+		}
 	/* 프로필 능력치 - ability */
 	#profile .p-ability{
 		width:100%;
@@ -760,8 +763,9 @@ bottom: 0;
 		width: 50%;
 		display: flex;
 		flex-direction: column;
-		padding: 50px 0 50px 30px;
+		padding: 50px 0 30px 30px;
 		margin-left: 30px;
+		transform: translateY(50px);
 	}
 	#publishing .pu-desc h3{
 		display: flex;

@@ -78,3 +78,17 @@
 	0 0 20px #ff00a6;
 	color: #fff;
 }
+.btnB{
+	box-shadow: 0 0 5px #00b3ff,
+	0 0 7px #00b3ff,
+	0 0 10px #00b3ff,
+	0 0 15px #00b3ff,
+	0 0 20px #00b3ff;
+}
+.btnP{
+	box-shadow: 0 0 5px #ff00a6,
+	0 0 7px #ff00a6,
+	0 0 10px#ff00a6,
+	0 0 15px#ff00a6,
+	0 0 20px #ff00a6;
+}

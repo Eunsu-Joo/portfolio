@@ -44,10 +44,13 @@
     const header = document.querySelector('#header'),
         main = document.querySelector('main'),
         body = document.body;
+        
         const introduce = document.querySelector('#introduce'),
         profile = document.querySelector('#profile'),
         publishing = document.querySelector('#publishing'),
         samples = document.querySelector('#sample'),
+        contact = document.querySelector('#contact'),
+
         puLeftBtn = document.querySelector('.pu-left-btn'),
         puRightBtn = document.querySelector('.pu-right-btn'),
         puImgSlide = document.querySelector('.pu-slide'),
@@ -104,13 +107,11 @@
         if (i == 6) return;
         puImgSlide.style.left = -slideWidth * i + 'px';
         i++;
-        console.log(i);
     })
     puLeftBtn.addEventListener('click', function () {
         if (i == 1) return;
         puImgSlide.style.left = -slideWidth * (i - 2) + 'px';
         i--;
-        console.log(i);
     })
 
 
@@ -150,10 +151,8 @@
 
     //스킬바 attribute가져오기
     const skillBars = document.querySelectorAll('.bar-progress');
-    console.log(skillBars);
     for (let i = 0; i < skillBars.length; i++) {
         const barWidth = skillBars[i].getAttribute('data-rate');
-        console.log(barWidth);
         skillBars[i].style.width = barWidth + '%';
     }
 
@@ -201,6 +200,7 @@
         //samplese 구름 클래스, 타이틀 제어
         if (currentScroll >= 1836 && currentScroll < 3152) {
             clouds.classList.add('cloudsAni');
+            //parallax title
             cloudTitle.style.marginBottom = currentScroll - 1150 * 2 + 'px';
         } else {
             clouds.classList.remove('cloudsAni');
@@ -218,25 +218,45 @@
                 })
             })
         }
-        console.log(currentScroll);
         //네비게이션스크롤
-        for(let l=0 ; l<naviList.length ; l++){
-            naviList[l].classList.remove('naviCurrent');
-            if (currentScroll >882 && currentScroll <=2016) {
-                naviList[0].classList.add('naviCurrent');
-            } 
-            if (currentScroll > 2016 && currentScroll <= 2900) {
-                naviList[1].classList.add('naviCurrent');
-            } 
-            if (currentScroll > 2900 && currentScroll <= 3906) {
-                naviList[2].classList.add('naviCurrent');
-            } 
-            if (currentScroll > 3906 && currentScroll <= 7000) {
-                naviList[3].classList.add('naviCurrent');
-            } 
+
+        //as if: 스크롤 내리면 자연스럽게 해당 섹션에 머무르기
+        //to be: 
+
+        for(let i=0 ; i<naviList.length ; i++){
+            naviList[i].classList.remove('naviCurrent');
+        }
+        let currentScroll2 = 0;
+        //1. 기준을 bottom(innerHeight)로 설정하기 위해 변수 선언
+ 
+        if (beforeScroll < currentScroll) { // 내려갈 때
+            currentScroll2 = currentScroll;
+            //스크롤2 = 현재 스크롤
+
+        } else { // 올라갈 때 - 기준을 bottom으로 할 떄
+            currentScroll2 = currentScroll + window.innerHeight;
+            //스크롤2 = 현재 스크롤의 기준을 innerHeight로 바꿈
         }
 
+        if (currentScroll2 >profile.offsetTop - 120 && currentScroll2 <=publishing.offsetTop) {
+            naviList[0].classList.add('naviCurrent');
+        } 
+
+        if (currentScroll2 > publishing.offsetTop && currentScroll2 <= samples.offsetTop) {
+            naviList[1].classList.add('naviCurrent');
+        } 
+
+        if (currentScroll2 > samples.offsetTop && currentScroll2 <= contact.offsetTop) {
+            naviList[2].classList.add('naviCurrent');
+        } 
+    
+        if (currentScroll2 > contact.offsetTop) {
+            naviList[3].classList.add('naviCurrent');
+        } 
+        beforeScroll = currentScroll;
     })
 
+    let beforeScroll = 0;
+    //1. 이전 스크롤과 현재 스크롤을 비교하기 위해 변수 선언
 
 })();
