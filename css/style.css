@@ -87,7 +87,7 @@
 
 }
 #intro1 div.box-ani{
-	transform: translate3d(0,40%,0);
+	transform: translate3d(0,38%,0);
 	transition: 2s ease;
 }
 .box{
@@ -137,8 +137,9 @@ text-align: center;
 .gotoBtn {
 	font-family: 'Lato';
 	position: absolute;
-	bottom: 7%;
-	right: 15%;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
 	color: #fff;
 	font-size: 1.8em;
 	position: absolute;

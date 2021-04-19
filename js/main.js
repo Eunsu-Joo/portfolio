@@ -242,11 +242,11 @@
             naviList[0].classList.add('naviCurrent');
         } 
 
-        if (currentScroll2 > publishing.offsetTop && currentScroll2 <= samples.offsetTop) {
+        if (currentScroll2 > publishing.offsetTop-10 && currentScroll2 <= samples.offsetTop) {
             naviList[1].classList.add('naviCurrent');
         } 
 
-        if (currentScroll2 > samples.offsetTop && currentScroll2 <= contact.offsetTop) {
+        if (currentScroll2 > samples.offsetTop-10 && currentScroll2 <= contact.offsetTop) {
             naviList[2].classList.add('naviCurrent');
         } 
     
