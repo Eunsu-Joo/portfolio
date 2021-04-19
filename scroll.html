@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            width: 100%;
+            height: 100vh;
+        }
+
+        #section1 {
+            background-color: beige;
+        }
+
+        #section2 {
+            background-color: rgb(255, 238, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 960px;
+            height: 600px;
+            background-image: url(./images/bg1.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <section id="section1">
+
+    </section>
+    <section id="section2">
+        <div class="container">
+
+        </div>
+    </section>
+    <script>
+        (function () {
+            const section2 = document.querySelector('#section2');
+            let bgCheck = false;
+            function changeBg() {
+
+                const images = [
+                    'url("./images/bg1.jpg")',
+                    'url("./images/bg2.jpg")',
+                    'url("./images/bg3.jpg")',
+                    'url("./images/bg4.jpg")',
+                    'url("./images/bg5.jpg")',
+                    'url("./images/bg6.jpg")',
+                    'url("./images/bg7.jpg")',
+                    'url("./images/bg8.jpg")',
+                    'url("./images/bg9.jpg")',
+                    'url("./images/bg10.jpg")',
+                ]
+
+                const section = document.querySelector('#section2 .container')
+                const bg = images[Math.floor(Math.random() * images.length)];
+
+                section.style.backgroundImage = bg;
+
+                bgCheck = true;
+            }
+
+
+
+
+            window.addEventListener('scroll', function () {
+                const clientRect = section2.getBoundingClientRect();
+                let currenScroll = window.scrollY;
+                console.log(currenScroll);
+                let timer;
+                if (currenScroll > clientRect.top) {
+                    if (timer) {
+                        clearInterval(timer);
+                        timer = null;
+
+                    }
+
+                }
+
+            })
+        })();
+    </script>
+</body>
+
+</html>

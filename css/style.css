@@ -137,7 +137,7 @@ text-align: center;
 .gotoBtn {
 	font-family: 'Lato';
 	position: absolute;
-	bottom: 30px;
+	bottom: 20px;
 	left: 50%;
 	transform: translateX(-50%);
 	color: #fff;

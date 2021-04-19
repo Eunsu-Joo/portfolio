@@ -39,6 +39,7 @@
 		justify-content: flex-end;
 		align-items: center;
 		z-index: 100;
+		background-color: inherit;
 	}
 	/* 해더 sticky클래스 : height조절 */
 	#header.sticky{
@@ -86,14 +87,7 @@
 		transform: translate3d(0,-30%,0);
 		margin-top: 5px;
 	}
-	/* a sticky : 블락 */
-	#header.sticky #logo a{
-		display: block;
-	}
-	/* span : 마진 간격 주기 */
-	#header.sticky #logo span{
-		padding-bottom: 1rem;
-	}
+
 	#header nav{
 		width: 100%;
 		height: 100%;
@@ -147,7 +141,17 @@
 		0 0 15px #00b3ff,
 		0 0 20px #00b3ff;
 	}
-
+	/* a sticky : 블락 */
+	#header.sticky #logo a{
+		display: block;
+	}
+	/* span : 마진 간격 주기 */
+	#header.sticky #logo span{
+		padding-bottom: 1rem;
+	}
+	#header.active{
+		background-color: rgba(0,0,0,0.3);
+	}
 	/* 메인 시작 */
 
 	main{
@@ -225,29 +229,12 @@ bottom: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	transition: 0.5s;
+	transition:all 0.5s ease;
 	z-index: 1;
 	background-repeat: no-repeat;
 }
-#introduce .container .clip::before{
-	content: '';
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: rgba(0,0,0,0.3);
-}
-#introduce .container .clip::after{
-	content: '';
-	position: absolute;
-	bottom: 50px;
-	color: #fff;
-	font-size: 2rem;
-	font-family: 'Playfair Display' ;
-	font-weight: 600;
-	transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
-}
+
+
 #introduce .container .clip:hover:after,
 #introduce .container .clip:hover::before{
 	opacity: 0;
@@ -270,19 +257,15 @@ bottom: 0;
 #introduce .container .clip3
 {
 	background: url(../images/life.jpg);
-	background-size: contain;
+	background-size: cover;
 	clip-path: polygon(80% 0, 100% 0, 100% 100%, 65% 100%);
 }
-/*콘테이너 마우스 오버시 클립 배경 나타내기 */
-#introduce .container:hover .clip
-{
-	clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-}
+
 /*클립 요소  마우스 오버시 배경 나타내기 */
 #introduce .container .clip:hover
 {
-	transition-delay: 0.5s;
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	z-index: 100;
 }
 /* 클립 콘텐츠 */
 #introduce .clip .content{
@@ -293,7 +276,7 @@ bottom: 0;
 	background-color: rgba(0,0,0,0.8);
 	padding: 20px 40px;
 	opacity: 0;
-	transition: 1s ease-in;
+	transition: 0.5s ease-in-out;
 	
 }
 /* 오버시 바텀 올라가면서 나타내기 */
@@ -404,7 +387,7 @@ bottom: 0;
 
 /*  active :  텍스트 돌아가는 애니메이션 실행 */
 #introduce div.active .planet-desc{
-	animation: animateDesc 15s linear 6;
+	animation: animateDesc 15s linear 10;
 }
 
   #introduce .btn{
@@ -487,9 +470,9 @@ bottom: 0;
 		width: 1200px;
 		height: 650px;
 		position: absolute;
+		left: 50%;
 		top: 50%;
-		transform: translate3d(0,-50%,0);
-
+		transform: translate3d(-50%,-50%,0);
 		
 	}
 	#profile .profile-contents h2{
@@ -999,11 +982,11 @@ bottom: 0;
 		filter: opacity(0);
 		opacity: 0;
 		transition: 0.7s ease-in;
-		transform: scale(1) translateY(-300px);
+		transform: scale(1) ;
 		animation: animate calc(5s * var(--i)) linear 1;
 	}
 	#sample div.cloudsAni img{
-		animation: animate calc(5s * var(--i)) linear infinite;
+		animation: animate calc(8s * var(--i)) linear 5;
 		opacity: 1;
 		filter: opacity(0.1);
 	}
@@ -1072,8 +1055,45 @@ section#contact{
 	align-items: center;
 	background-image: url(../images/bg1.jpg);
 	box-shadow: 0 0 10px rgba(255,255,255,0.4);
+	
 }
+#contact .img-container.active{
+	animation: imgAni 10s ease-in-out alternate infinite;
+}
+@keyframes imgAni{
+	0%  {
+		background-image: url(../images/bg10.jpg);
+	}
+	10%{
+		background-image: url(../images/bg1.jpg);
+	}
+	20%{
+		background-image: url(../images/bg2.jpg);
+	}
+	30%{
+		background-image: url(../images/bg3.jpg);
+	}
+	40%{
+		background-image: url(../images/bg4.jpg);
+	}
+	50%{
+		background-image: url(../images/bg5.jpg);
+	}
+	60%{
+		background-image: url(../images/bg6.jpg);
+	}
+	70%{
+		background-image: url(../images/bg7.jpg);
+	}
+	80%{
+		background-image: url(../images/bg8.jpg);
+	}
+	90%{
+		background-image: url(../images/bg9.jpg);
+	}
 
+
+}
 #contact .contents{
 	width: 100%;
 	background-color: rgba(0,0,0,0.5);

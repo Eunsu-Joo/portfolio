@@ -4,7 +4,6 @@
 //1: 해더 페이지 딜레이 후 타임아웃 되서 해더 상단에 붙는 부분
 (function () {
     //페이드 인 페이드아웃함수
-
     function fadeIn(target, time) {
         let level = 0,
             inTimer = null;
@@ -43,20 +42,20 @@
     //사용할 변수 선언
     const header = document.querySelector('#header'),
         main = document.querySelector('main'),
-        body = document.body;
-        
-        const introduce = document.querySelector('#introduce'),
+        body = document.body,
+        introduce = document.querySelector('#introduce'),
         profile = document.querySelector('#profile'),
         publishing = document.querySelector('#publishing'),
         samples = document.querySelector('#sample'),
         contact = document.querySelector('#contact'),
-
         puLeftBtn = document.querySelector('.pu-left-btn'),
         puRightBtn = document.querySelector('.pu-right-btn'),
         puImgSlide = document.querySelector('.pu-slide'),
         puSlideItem = document.querySelector('.pu-slideBox'),
         naviList = document.querySelectorAll('#header nav ul li'),
-        section = document.querySelectorAll('section');
+        section = document.querySelectorAll('section'),
+        cloudTitle = document.querySelector('#sample h2'),
+        clouds = document.querySelector('.clouds');
 
     //해더 함수
     function headerFunc() {
@@ -98,6 +97,13 @@
     headerFunc();
     headerNaviFunc();
 
+    //인트로, 이력서 클릭 시 페이지 이동
+
+    const gotoIntroBtn = document.querySelector('.gotoIntro');
+    gotoIntroBtn.addEventListener('click', function () {
+        location.href = 'index.html';
+    })
+
 
     //퍼블리싱 클릭 시 article이동
     let slideWidth = puSlideItem.clientWidth;
@@ -114,41 +120,6 @@
         i--;
     })
 
-
-
-
-    //인트로, 이력서 클릭 시 페이지 이동
-
-    const gotoIntroBtn = document.querySelector('.gotoIntro');
-    gotoIntroBtn.addEventListener('click', function () {
-        fadeOut(body, 500);
-        location.href = 'index.html';
-    })
-
-
-
-    //life 배경이미지 슬라이드
-    function changeBg() {
-        const images = [
-            'url("./images/bg1.jpg")',
-            'url("./images/bg2.jpg")',
-            'url("./images/bg3.jpg")',
-            'url("./images/bg4.jpg")',
-            'url("./images/bg5.jpg")',
-            'url("./images/bg6.jpg")',
-            'url("./images/bg7.jpg")',
-            'url("./images/bg8.jpg")',
-            'url("./images/bg9.jpg")',
-            'url("./images/bg10.jpg")',
-        ]
-
-        const section = document.querySelector('#contact .img-container')
-        const bg = images[Math.floor(Math.random() * images.length)];
-        section.style.backgroundImage = bg;
-    }
-
-    let timer = setInterval(changeBg, 2000);
-
     //스킬바 attribute가져오기
     const skillBars = document.querySelectorAll('.bar-progress');
     for (let i = 0; i < skillBars.length; i++) {
@@ -157,33 +128,23 @@
     }
 
 
-    //구름 element
-    const cloudTitle = document.querySelector('#sample h2');
-    const clouds = document.querySelector('.clouds');
-
     // 스크롤 이벤트
     window.addEventListener('scroll', function () {
         //현재 스크롤 값
         let currentScroll = window.scrollY;
-
         /*1. intro : 0 , 2. profile : 970, 3. pub : 1936 , 4:sample : 2902 +- 시켜서 자연스럽게 이어지도록 설정
          */
         // 해더 스크롤
         if (currentScroll > 0) {
             introduce.classList.add('active');
+            header.classList.add('active');
         } else {
             introduce.classList.remove('active');
-        }
-        if (currentScroll >= 100) {
-            header.style.backgroundColor = 'rgba(0,0,0,0.3)';
-            //해더 스크롤 했을 때, 현재 스크롤 위치가 100 이상이면 배경색 변경
-        } else {
-            header.style.backgroundColor = 'inherit';
-            //100 이하이면 배경은 inherit
+            header.classList.remove('active');
         }
 
-        // intro 스크롤에 따라 클래스 제어
-        if (currentScroll > 750) {
+        // intro 스크롤에 따라 클래스 제어 - 프로필에 도달했을 떄
+        if (currentScroll > profile.offsetTop) {
             document.querySelector('.move-area').classList.remove('active');
 
         } else {
@@ -191,21 +152,21 @@
         }
 
         // profile 행성 클래스 제어
-        if (currentScroll >= 750 && currentScroll < 2336) {
+        if (currentScroll >= introduce.offsetTop && currentScroll < publishing.offsetTop + 100) {
             profile.classList.add('show');
         } else {
             profile.classList = 'remove';
         }
 
         //samplese 구름 클래스, 타이틀 제어
-        if (currentScroll >= 1836 && currentScroll < 3152) {
+        if (currentScroll >= publishing.offsetTop + 200 && currentScroll < samples.offsetTop+50) {
             clouds.classList.add('cloudsAni');
             //parallax title
-            cloudTitle.style.marginBottom = currentScroll - 1150 * 2 + 'px';
+            cloudTitle.style.marginBottom = currentScroll - 1100 * 2 + 'px';
         } else {
             clouds.classList.remove('cloudsAni');
         }
-        if (3152 < currentScroll) {
+        if (currentScroll>samples.offsetTop) {
             document.addEventListener('mousemove', function (e) {
                 this.querySelectorAll('.layer').forEach(layer => {
                     //arrow function은 para가 하나일 경우 이렇게 쓸 수도 있음.
@@ -217,18 +178,22 @@
                     layer.style.transform = `translateX(${x}px) translateY(${y}px)`
                 })
             })
+            document.querySelector('#contact .img-container').classList.add('active');
+        } else{
+document.querySelector('#contact .img-container').classList.remove('active');
         }
+
+
+
+
         //네비게이션스크롤
 
-        //as if: 스크롤 내리면 자연스럽게 해당 섹션에 머무르기
-        //to be: 
-
-        for(let i=0 ; i<naviList.length ; i++){
+        for (let i = 0; i < naviList.length; i++) {
             naviList[i].classList.remove('naviCurrent');
         }
         let currentScroll2 = 0;
         //1. 기준을 bottom(innerHeight)로 설정하기 위해 변수 선언
- 
+
         if (beforeScroll < currentScroll) { // 내려갈 때
             currentScroll2 = currentScroll;
             //스크롤2 = 현재 스크롤
@@ -238,25 +203,28 @@
             //스크롤2 = 현재 스크롤의 기준을 innerHeight로 바꿈
         }
 
-        if (currentScroll2 >profile.offsetTop - 120 && currentScroll2 <=publishing.offsetTop) {
+
+        if (currentScroll > profile.offsetTop - 120 && currentScroll2 <= publishing.offsetTop) {
             naviList[0].classList.add('naviCurrent');
-        } 
+        }
 
-        if (currentScroll2 > publishing.offsetTop-10 && currentScroll2 <= samples.offsetTop) {
+        if (currentScroll2 > publishing.offsetTop && currentScroll2 <= samples.offsetTop) {
             naviList[1].classList.add('naviCurrent');
-        } 
+        }
 
-        if (currentScroll2 > samples.offsetTop-10 && currentScroll2 <= contact.offsetTop) {
+        if (currentScroll2 > samples.offsetTop && currentScroll2 <= contact.offsetTop) {
             naviList[2].classList.add('naviCurrent');
-        } 
-    
+        }
+
         if (currentScroll2 > contact.offsetTop) {
             naviList[3].classList.add('naviCurrent');
-        } 
+
+        }
         beforeScroll = currentScroll;
     })
 
     let beforeScroll = 0;
     //1. 이전 스크롤과 현재 스크롤을 비교하기 위해 변수 선언
+    
 
 })();
