@@ -5,13 +5,3 @@
     src: url(./font/AppleSDGothicNeoM.woff) format('woff');
     font-weight: 400;
 }
-@font-face{
-    font-family: 'apple-l';
-    src: url(./font/AppleSDGothicNeoL.woff) format('woff');
-    font-weight: 300;
-}
-@font-face{
-    font-family: 'Malgun-Gothic';
-    src: url(./font/Malgun-Gothic_29381.woff) format('woff');
-    font-weight: 400;
-}

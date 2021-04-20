@@ -65,7 +65,7 @@
             header.classList.add('sticky');
         }, 1000);
         setTimeout(function () {
-            fadeIn(main);
+            fadeIn(main,100);
             document.body.classList.add('sticky');
         }, 2500)
     }

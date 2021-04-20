@@ -986,7 +986,7 @@ bottom: 0;
 		animation: animate calc(5s * var(--i)) linear 1;
 	}
 	#sample div.cloudsAni img{
-		animation: animate calc(8s * var(--i)) linear 5;
+		animation: animate calc(7s * var(--i)) linear infinite;
 		opacity: 1;
 		filter: opacity(0.1);
 	}
